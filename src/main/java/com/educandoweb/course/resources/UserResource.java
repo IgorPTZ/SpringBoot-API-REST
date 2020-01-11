@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.educandoweb.course.entities.User;
 
-// Flow: Application -> Resource Layer (rest controllers) -> Service Layer -> Data Access Layer (data repositories)
+// Application Flow: Application -> Resource Layer (rest controllers) -> Service Layer -> Data Access Layer (data repositories)
 
  @RestController
  @RequestMapping(value ="/users")

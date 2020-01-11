@@ -2,10 +2,23 @@ package com.educandoweb.course.entities;
 
 import java.io.Serializable;
 
-//Flow: Application -> Resource Layer (rest controllers) -> Service Layer -> Data Access Layer (data repositories)
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+//Applicattion Flow: Application -> Resource Layer (rest controllers) -> Service Layer -> Data Access Layer (data repositories)
+
+
+//Notation Responsavel por fazer o mapeamente entre modelo POO e relacional do DB
+
+@Entity 
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Gera o auto increment do ID
 	private Long id;
 	private String name;
 	private String email;
