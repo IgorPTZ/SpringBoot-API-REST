@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 //Applicattion Flow: Application -> Resource Layer (rest controllers) -> Service Layer -> Data Access Layer (data repositories)
 
 
@@ -30,7 +32,7 @@ public class User implements Serializable {
 	private String phone;
 	private String password;
 	
-	
+	@JsonIgnore // Notation par aplicar o Lazy Loading e evitar loops infinitos relacionados a relacionamentos
 	@OneToMany(mappedBy = "client")
 	private List<Order> orders = new ArrayList<>();
 	

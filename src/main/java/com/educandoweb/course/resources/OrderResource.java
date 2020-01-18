@@ -9,32 +9,32 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.educandoweb.course.entities.User;
-import com.educandoweb.course.services.UserService;
+import com.educandoweb.course.entities.Order;
+import com.educandoweb.course.services.OrderService;
 
 // Application Flow: Application -> Resource Layer (rest controllers) -> Service Layer -> Data Access Layer (data repositories)
  
 
  // Classe da camada de resource
  @RestController
- @RequestMapping(value ="/users")
- public class UserResource {
+ @RequestMapping(value ="/orders")
+ public class OrderResource {
 	 
 	// A notation autowired realiza a injeção de dependecias automaticamente
 	 @Autowired
-	 private UserService service;
+	 private OrderService service;
 	 
 	 @GetMapping
-	 public ResponseEntity<List<User>> findAll() {
-		 List<User> list = service.findAll();
+	 public ResponseEntity<List<Order>> findAll() {
+		 List<Order> list = service.findAll();
 		 
 		 return ResponseEntity.ok().body(list);
 	 }
 	 
 	 // Indica que a rota podera receber um parametro do tipo id
 	 @GetMapping(value = "/{id}")
-	 public ResponseEntity<User> findById(@PathVariable Long id) {
-		 User user = service.findById(id);
+	 public ResponseEntity<Order> findById(@PathVariable Long id) {
+		 Order user = service.findById(id);
 		 
 		 return ResponseEntity.ok().body(user);
 	 }

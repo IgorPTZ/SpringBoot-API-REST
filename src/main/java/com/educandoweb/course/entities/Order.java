@@ -11,22 +11,26 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "tb_order") // Define o nome da tabela (opcional)
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant moment; // Semelhante a classe Date
-	
+
 	@ManyToOne // Instrui ao JPA que ha uma relacao de muitos-para-um com a entidade User
-	@JoinColumn(name="client_id") // Instrui ao JPA qual sera o nome da chave estrangeira na tabela
+	@JoinColumn(name = "client_id") // Instrui ao JPA qual sera o nome da chave estrangeira na tabela
 	private User client;
-	
+
 	public Order() {
-		
+
 	}
 
 	public Order(Long id, Instant moment, User client) {
