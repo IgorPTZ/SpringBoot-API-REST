@@ -34,8 +34,8 @@ import com.educandoweb.course.services.CategoryService;
 	 // Indica que a rota podera receber um parametro do tipo id
 	 @GetMapping(value = "/{id}")
 	 public ResponseEntity<Category> findById(@PathVariable Long id) {
-		 Category user = service.findById(id);
+		 Category category = service.findById(id);
 		 
-		 return ResponseEntity.ok().body(user);
+		 return ResponseEntity.ok().body(category);
 	 }
 }

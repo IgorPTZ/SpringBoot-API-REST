@@ -6,25 +6,25 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.educandoweb.course.entities.Order;
-import com.educandoweb.course.repositories.OrderRepository;
+import com.educandoweb.course.entities.Product;
+import com.educandoweb.course.repositories.ProductRepository;
 
 //Application Flow: Application -> Resource Layer (rest controllers) -> Service Layer -> Data Access Layer (data repositories)
 
 // A notation @Service permite cadastrar uma classe para que seja injetada automaticamente nas dependencias
 @Service
-public class OrderService {
+public class ProductService {
 	// A notation autowired realiza a injeção de dependecias automaticamente
 	
 	@Autowired 
-	private OrderRepository repository;
+	private ProductRepository repository;
 	
-	public List<Order> findAll() {
+	public List<Product> findAll() {
 		return repository.findAll();
 	}
 	
-	public Order findById(Long id) {
-		Optional<Order> order = repository.findById(id);
-		return order.get();
+	public Product findById(Long id) {
+		Optional<Product> product = repository.findById(id);
+		return product.get();
 	}
 }
